@@ -1,0 +1,43 @@
+SANS FOR610 tools:
+
+utils:
+jq - json pretty printing and more...
+cyberchef - encode, decode, encrypt, decrypt strings and more...
+
+fakedns - dns resol
+inetsim - http, https, smtp, ftp, pop3, tftp, irc and more...
+fiddler
+
+iptables
+
+static process analysis tools:
+strings
+pestr
+bintext(gui)
+peframe (yara plugins, anti dbg, network http, screenshot, winreg) | pescanner.py
+pestudio(gui)
+die(gui) | diec
+exeinfo
+
+behavioral process analysis tools:
+process hacker(gui)
+process monitor(gui)
+regshot(gui)
+procmon(gui)
+procdot(gui)
+wireshark(gui)
+
+code analysis(emulated)
+run_speakeasy.py
+capa
+
+code analysis(dynamic)
+x64dbg
+api monitor
+
+TO REM:
+look out for functions in symb.ref like 
+reg
+internet
+http
+getTemp
