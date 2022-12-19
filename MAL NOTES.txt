@@ -18,6 +18,7 @@ peframe (yara plugins, anti dbg, network http, screenshot, winreg) | pescanner.p
 pestudio(gui)
 die(gui) | diec
 exeinfo
+cff explorer
 
 behavioral process analysis tools:
 process hacker(gui)
@@ -35,9 +36,48 @@ code analysis(dynamic)
 x64dbg
 api monitor
 
+JS scripts analysis:
+js-beautify = pretty print js
+js = spidermonkey engine util in remnux
+cscript = jsengine util in windows
+AMSI(AntiMalware Scan Interface)
+
 TO REM:
-look out for functions in symb.ref like 
+look out for functions in symbol references like:
 reg
 internet
 http
-getTemp
+GetTempPathW
+GetTempFileNameW
+CreateProcess
+resource
+loadlibrary
+ShellExecute
+
+to load a program with the mentioned ImageBase we need to turn off ASLR
+to switch off aslr while analyzing:
+open cff explorer goto optional header & 
+view DLLCharacteristics and it shows "click here"
+so click and uncheck DLL can move &file > save
+
+to load malware's runtime misc:
+use Scylla by first running the malware
+click dump then IAT autosearch
+then get imports and finally fix the dump
+(this still wont fix the dumped malware if:
+it is being packed as the entry point wont be changed from the unpacking alg.)
+To fix that we can use the original malware and use x64dbg and ollydbg to find the OEP
+and then dump it.
+
+when analyzing functions:
+EBP - (anything) = local variable for that function
+EBP + (anything) = parameters pass for that function
+
+to analyze malicious pdf:
+for recon - pdfid.py, pdfparser.py
+
+when analyzing jscripts:
+look out for eval
+(when running a js script in remnux that is specific to windows it might miss functions
+that are not available in linux, so polyfilling can be done)
+
