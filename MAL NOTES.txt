@@ -31,16 +31,19 @@ wireshark(gui)
 code analysis(emulated)
 run_speakeasy.py
 capa
+scdbg = sense capabilities of shellcode
 
 code analysis(dynamic)
 x64dbg
-api monitor
+Scylla = used for fixing IAT for an exe
+Ollydump = used for dumping unpacked exe
+API Monitor
 
 JS scripts analysis:
 js-beautify = pretty print js
 js = spidermonkey engine util in remnux
 cscript = jsengine util in windows
-AMSI(AntiMalware Scan Interface)
+AMSI(AntiMalware Scan Interface) = generally used to check script execution
 
 TO REM:
 look out for functions in symbol references like:
@@ -60,14 +63,15 @@ open cff explorer goto optional header &
 view DLLCharacteristics and it shows "click here"
 so click and uncheck DLL can move &file > save
 
-to load malware's runtime misc:
-use Scylla by first running the malware
+for packed malware misc:
+use Scylla(standalone) by first running the malware
 click dump then IAT autosearch
 then get imports and finally fix the dump
-(this still wont fix the dumped malware if:
-it is being packed as the entry point wont be changed from the unpacking alg.)
-To fix that we can use the original malware and use x64dbg and ollydbg to find the OEP
+(this still wont fix the dumped malware
+as the entry point wont be changed from the unpacking alg.)
+To fix that we can use the original malware and use x64dbg and ollydump to find the OEP
 and then dump it.
+After dump use scylla plugin in xdbg to fix IAT and dump the result to the ollydump exe
 
 when analyzing functions:
 EBP - (anything) = local variable for that function
