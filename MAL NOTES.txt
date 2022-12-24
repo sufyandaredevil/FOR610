@@ -1,4 +1,4 @@
-SANS FOR610 tools:
+SANS FOR610(2021) NOTES:
 
 utils:
 jq - json pretty printing and more...
@@ -84,4 +84,18 @@ when analyzing jscripts:
 look out for eval
 (when running a js script in remnux that is specific to windows it might miss functions
 that are not available in linux, so polyfilling can be done)
+
+for Malware that performs Code Injection always try finding the function call pattern:
+CreateToolHelp32Snapshot / EnumProcesses
+OpenProcess
+VirtualAllocEx
+WriteProcessMemory
+CreateRemoteThread
+(start from CreateRemoteThread and above)
+Try using function call tree window in ghidra to get a better view of function calls
+Another way of code injection is place an evil.dll in disk and let the victim process load it using the LoadLibrary API with the above given function call pattern
+
+Native APIs starting with prefixes Nt, Zw, Rtl are only called by Windows APIs
+and malware authors call them directly avoiding WinApis
+(Also there are NativeAPI alternatives of WinAPI)
 
