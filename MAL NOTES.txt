@@ -83,7 +83,7 @@ for recon - pdfid.py, pdfparser.py
 when analyzing jscripts:
 look out for eval
 (when running a js script in remnux that is specific to windows it might miss functions
-that are not available in linux, so polyfilling can be done)
+that are not available in linux, so polyfilling can be done with the help of some scripts that are prebuilt in remnux)
 
 for Malware that performs Code Injection always try finding the function call pattern:
 CreateToolHelp32Snapshot / EnumProcesses
